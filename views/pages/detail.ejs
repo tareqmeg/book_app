@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Book App</title>
+</head>
+<body>
+    <header>
+<h2>Best Books!</h2>
+<nav>
+    <a href="/SearchResults">Search Results</a>
+    <a href="/new">Search by Title or Author</a>
+    
+</nav>
+
+    </header>
+    <main>
+        <section class="result">
+
+        <div>
+           <h3>Book Name:<%= item.bookname %> </h3> 
+           <img src="<%= item.bookimageurl %> " alt="">
+           <p>Book Auther:<%= item.bookauther %> </p>
+           <p>Book publisher:<%= item.bookpublisher %> </p>
+           <p>publish Date:<%= item.publishdate %> </p>
+           <p>Description: <%= item.bookdescription %> </p>
+           <form action="/deleteBook/<%= item.id %>?_method=delete" method="POST">
+            <button>Delete Book</button>
+            </form>
+        </div>
+        <button id="updateButton">update</button>
+        
+        <section id="ubdateForm">
+            <h3>Update book info</h3>
+            <form action="/updateBook/<%= item.id %>?_method=put" method="POST">
+                <br>
+                <input type="text" name="title" value="<%= item.bookname %> " >
+                <br>
+                <input type="text" name="image" value="<%= item.bookimageurl %> " >
+                <br>
+                <input type="text" name="auther" value="<%= item.bookauther %> ">
+                <br>
+                <input type="text" name="publisher" value="<%= item.bookpublisher %> ">
+                <br> 
+                <input type="text" name="publishdate" value="<%= item.publishdate %>">
+                <br>
+                <textarea  name="description" cols="35" rows="10"  value="<%= item.bookdescription %>"></textarea>
+                <button>Update Book INFO</button>
+            </form>
+        </section>
+        </section>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script >
+        $('#ubdateForm').hide();
+        $('#updateButton').on('click',function(){
+        $('#ubdateForm').toggle();
+        });
+    </script>
+</body>
+</html>
