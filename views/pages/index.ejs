@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/styles/base.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>Book App</title>
 </head>
 <body>
     <header>
@@ -17,11 +17,22 @@
 </nav>
 
     </header>
-    <main>
-       <div>
-
-       </div> 
-
+    <main class="wrapper">
+        <section class="result">
+        <p>you have <%= items.length %> </p>
+       <% items.forEach(book=>{ %>
+            <dive>
+                    
+                <h3><%= book.bookname %></h3>
+                <img src="<%= book.bookimageurl %>" alt="">
+                <p><%= book.bookauther %></p> 
+             
+                <form action="/addbook/<%= book.id %> ">
+                    <button>Sho detail</button>
+                </form>
+            </dive>
+            <%  }) %>
+        </section>
     </main>
     
 </body>
